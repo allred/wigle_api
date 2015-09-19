@@ -10,7 +10,7 @@ module WigleApi
       @connection = Net::HTTP.new(WIGLE_URI.host, WIGLE_URI.port)
       @connection.ca_file = "/etc/pki/tls/certs/ca-bundle.crt"
       @connection.use_ssl = true
-      @connection.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      @connection.verify_mode = OpenSSL::SSL::VERIFY_NONE
       
       @logged_in = false
     end
@@ -21,7 +21,7 @@ module WigleApi
       login_form_data = {
         "credential_0" => username,
         "credential_1" => password,
-        "destination" => "/gps/gps/main",
+        "destination" => "/https://wigle.net",
         "noexpire" => "on",
       }
 
